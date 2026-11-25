@@ -1,369 +1,128 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bshdigit.com | Software, Digital Services & Solutions (15+ Yrs Exp)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
+  <title>IT Services | BSHDigit</title>
+  <style>
+    :root { --primary: #ea580c; --accent: #f97316; --accent-dark: #c2410c; --bg: #ffffff; --surface: #fff7ed; --text: #1e293b; --muted: #475569; --border: #fed7aa; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+    header { background: #ffffff; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1120px; margin: 0 auto; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .brand { display: flex; align-items: center; text-decoration: none; }
+    .brand img { height: 50px; width: auto; border-radius: 6px; display: block; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 600; margin-left: 1.5rem; padding-bottom: 4px; }
+    nav a:hover, nav a.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+    .page-banner { background: #ffffff; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; text-align: center; }
+    .page-banner h1 { font-size: 2.1rem; margin-bottom: 0.5rem; color: var(--primary); }
+    .page-banner p { color: var(--muted); max-width: 680px; margin: 0 auto; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 3rem 1.5rem; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.5rem; }
+    .service-card { background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; box-shadow: 0 2px 10px rgba(249,115,22,0.05); }
+    .tag { display: inline-block; background: var(--surface); color: var(--primary); border: 1px solid var(--border); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 999px; margin-bottom: 0.75rem; }
+    .service-card h3 { color: var(--primary); margin-bottom: 0.75rem; }
+    .service-card ul { padding-left: 1.2rem; color: var(--muted); font-size: 0.95rem; }
+    .service-card li { margin-bottom: 0.45rem; }
+    .cta-box { background: #ffffff; border: 2px solid var(--border); border-radius: 10px; padding: 2rem; text-align: center; margin-top: 3rem; }
+    .cta-box h2 { color: var(--primary); margin-bottom: 0.5rem; }
+    .btn { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 1rem; }
+    .btn:hover { background: var(--accent-dark); }
+    footer { background: #ffffff; border-top: 2px solid var(--border); color: var(--primary); text-align: center; padding: 2rem 1.5rem; margin-top: 3rem; font-size: 0.9rem; font-weight: 600; }
+  </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased selection:bg-orange-500/20 selection:text-orange-700">
-
-  <!-- Navigation -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <!-- Save your orange/white bshdigit logo as logo.jpg in the same folder as index.html -->
-        <img src="logo.jpg" alt="bshdigit.com - Software, Digital Services, Solutions" class="h-14 w-auto object-contain" />
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand" aria-label="BSHDigit Home">
+        <img src="logo.jpg" alt="BSHDigit" />
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="#services" class="hover:text-orange-600 transition">Services</a>
-        <a href="#skills" class="hover:text-orange-600 transition">Tech Stack</a>
-        <a href="#training" class="hover:text-orange-600 transition">Personal Training</a>
-        <a href="#request" class="px-5 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-semibold transition shadow-sm">
-          Request Support
-        </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden border-b border-slate-200 bg-gradient-to-b from-white via-orange-50/30 to-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-xs font-mono font-medium mb-6">
-          <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-          bshdigit.com • 15+ Years of Software & Data Engineering Experience
-        </div>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
-          On-Demand <span class="text-orange-600">Technical Job Support</span> & 1-on-1 Personal Training
-        </h1>
-        <p class="mt-6 text-lg text-slate-600 leading-relaxed">
-          Stuck on a production issue, sprint deliverable, or complex cloud data pipeline? Get practical, hands-on support from a senior developer—or master <strong class="text-slate-900">SQL, Snowflake, and dbt</strong> through personalized 1-on-1 training.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a href="#request" class="px-6 py-3.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-semibold transition shadow-md shadow-orange-600/15">
-            Submit a Support Request
-          </a>
-          <a href="#training" class="px-6 py-3.5 rounded-lg bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-medium transition">
-            Explore 1-on-1 Training
-          </a>
-        </div>
-
-        <!-- Quick Trust Metrics -->
-        <div class="mt-12 pt-8 border-t border-slate-200 grid grid-cols-3 gap-6 max-w-lg">
-          <div>
-            <div class="text-2xl font-bold text-slate-900">15+ Yrs</div>
-            <div class="text-xs text-slate-500 mt-1">Industry Experience</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-slate-900">11+ Tools</div>
-            <div class="text-xs text-slate-500 mt-1">Cloud, Data & DevOps</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-slate-900">1-on-1</div>
-            <div class="text-xs text-slate-500 mt-1">Live Screen-Share Help</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="page-banner">
+    <h1>IT Services & Technical Solutions</h1>
+    <p>Specialized data engineering, cloud architecture, real-time job support, and personalized technical mentorship.</p>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-20 border-b border-slate-200 bg-slate-50/70">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="max-w-2xl">
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Software, Digital Services & Mentorship Solutions</h2>
-        <p class="mt-3 text-slate-600">Flexible support tailored to working professionals, new joiners, and career transitioners.</p>
+  <main class="container">
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="tag">DATA ENGINEERING</span>
+        <h3>Snowflake & Cloud Data Warehousing</h3>
+        <ul>
+          <li>Warehouse sizing, cost optimization, and RBAC security architecture</li>
+          <li>Continuous data ingestion with Snowpipe, Streams, and Tasks</li>
+          <li>Zero-copy cloning, Time Travel, and enterprise data governance</li>
+        </ul>
       </div>
 
-      <div class="mt-10 grid md:grid-cols-2 gap-6">
-        <!-- Card 1: Job Support -->
-        <div class="p-7 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 shadow-sm transition">
-          <div class="w-10 h-10 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 font-mono font-bold">
-            01
-          </div>
-          <h3 class="mt-5 text-xl font-semibold text-slate-900">Real-Time Technical Job Support</h3>
-          <p class="mt-3 text-slate-600 text-sm leading-relaxed">
-            Direct troubleshooting, architecture guidance, code reviews, and sprint task assistance across databases, cloud platforms, and data pipelines.
-          </p>
-          <ul class="mt-5 space-y-2.5 text-sm text-slate-700">
-            <li class="flex items-center gap-2"><span class="text-orange-600 font-bold">✓</span> Query tuning, stored procedures & complex ETL logic</li>
-            <li class="flex items-center gap-2"><span class="text-orange-600 font-bold">✓</span> AWS & Azure cloud data workflow debugging</li>
-            <li class="flex items-center gap-2"><span class="text-orange-600 font-bold">✓</span> Git branching workflows, Jira & Azure Boards sprint execution</li>
-          </ul>
-        </div>
-
-        <!-- Card 2: Personal Training -->
-        <div class="p-7 rounded-2xl bg-white border border-slate-200 hover:border-slate-400 shadow-sm transition">
-          <div class="w-10 h-10 rounded-lg bg-slate-100 border border-slate-300 flex items-center justify-center text-slate-800 font-mono font-bold">
-            02
-          </div>
-          <h3 class="mt-5 text-xl font-semibold text-slate-900">1-on-1 Personal Training</h3>
-          <p class="mt-3 text-slate-600 text-sm leading-relaxed">
-            Structured, project-based personal mentorship focused on real-world enterprise scenarios rather than generic textbook theory.
-          </p>
-          <ul class="mt-5 space-y-2.5 text-sm text-slate-700">
-            <li class="flex items-center gap-2"><span class="text-orange-600 font-bold">✓</span> Dedicated curriculum in <strong>SQL, Snowflake, and dbt</strong></li>
-            <li class="flex items-center gap-2"><span class="text-orange-600 font-bold">✓</span> Hands-on assignments, real datasets & interview prep</li>
-            <li class="flex items-center gap-2"><span class="text-orange-600 font-bold">✓</span> Flexible weekday or weekend schedules</li>
-          </ul>
-        </div>
+      <div class="service-card">
+        <span class="tag">ANALYTICS ENGINEERING</span>
+        <h3>dbt (Data Build Tool) Transformations</h3>
+        <ul>
+          <li>Modular SQL modeling (staging, intermediate, and mart layers)</li>
+          <li>Custom Jinja macros, incremental models, and snapshots</li>
+          <li>Automated schema/data quality tests, docs, and Git CI/CD workflows</li>
+        </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- Skills Matrix -->
-  <section id="skills" class="py-20 border-b border-slate-200 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Technical Expertise & Job Support Stack</h2>
-      <p class="mt-3 text-slate-600">15+ years of production experience across databases, cloud warehousing, scripting, and agile delivery.</p>
+      <div class="service-card">
+        <span class="tag">DATABASE SYSTEMS</span>
+        <h3>Enterprise SQL & Query Optimization</h3>
+        <ul>
+          <li>SQL, PL/SQL, and T-SQL stored procedures, triggers, and functions</li>
+          <li>Execution plan analysis, indexing strategies, and query tuning</li>
+          <li>Legacy on-premise database migration to cloud platforms</li>
+        </ul>
+      </div>
 
-      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="text-xs font-mono uppercase tracking-wider text-orange-600 font-semibold mb-3">Databases & Querying</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">SQL</span>
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">PL/SQL</span>
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">T-SQL</span>
-          </div>
-        </div>
+      <div class="service-card">
+        <span class="tag">CLOUD & AUTOMATION</span>
+        <h3>Python, AWS & Azure Solutions</h3>
+        <ul>
+          <li>Python ETL scripts, REST API integrations, and data validation</li>
+          <li>AWS (S3, Glue, Lambda, IAM) & Azure Data Factory pipelines</li>
+          <li>Agile delivery workflows using Git, Jira, and Azure Boards</li>
+        </ul>
+      </div>
 
-        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="text-xs font-mono uppercase tracking-wider text-orange-600 font-semibold mb-3">Modern Data Stack</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">Snowflake</span>
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">dbt</span>
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">Python</span>
-          </div>
-        </div>
+      <div class="service-card">
+        <span class="tag">LIVE ASSISTANCE</span>
+        <h3>Real-Time Technical Job Support</h3>
+        <ul>
+          <li>Hands-on debugging and production blocker resolution</li>
+          <li>Architecture reviews and sprint deliverable guidance</li>
+          <li>Confidential, fast-turnaround support for working engineers</li>
+        </ul>
+      </div>
 
-        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="text-xs font-mono uppercase tracking-wider text-orange-600 font-semibold mb-3">Cloud Platforms</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">AWS</span>
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">Azure</span>
-          </div>
-        </div>
-
-        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="text-xs font-mono uppercase tracking-wider text-orange-600 font-semibold mb-3">Version Control & Agile</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">Git</span>
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">Jira</span>
-            <span class="px-3 py-1 rounded-md bg-white border border-slate-200 text-sm font-medium text-slate-800">Azure Boards</span>
-          </div>
-        </div>
+      <div class="service-card">
+        <span class="tag">MENTORSHIP</span>
+        <h3>1-on-1 Personal Technical Training</h3>
+        <ul>
+          <li>Project-based tracks in SQL, Snowflake, dbt, and Python</li>
+          <li>Tailored curriculum for career transitioners and upskilling teams</li>
+          <li>Real-world capstone builds and interview readiness coaching</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <!-- Personal Training Tracks -->
-  <section id="training" class="py-20 border-b border-slate-200 bg-slate-50/70">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="max-w-2xl">
-        <span class="text-xs font-mono uppercase tracking-wider text-orange-600 font-semibold">1-on-1 Personal Mentorship</span>
-        <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-slate-900">Personal Training Programs</h2>
-        <p class="mt-3 text-slate-600">Learn directly from a senior engineer with 15+ years in the industry. Every session is tailored to your current skill level and career goals.</p>
-      </div>
-
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <!-- SQL -->
-        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <span class="inline-block px-2.5 py-1 rounded text-xs font-mono bg-orange-50 text-orange-700 border border-orange-200">Track 01</span>
-            <h3 class="mt-4 text-xl font-bold text-slate-900">Mastering SQL</h3>
-            <p class="mt-2 text-sm text-slate-600">From foundational queries to advanced analytical functions, query optimization, indexing, and procedural logic (PL/SQL & T-SQL).</p>
-            <ul class="mt-4 space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-4">
-              <li>• Complex Joins, CTEs & Window Functions</li>
-              <li>• Stored Procedures, Triggers & Functions</li>
-              <li>• Execution Plans & Performance Tuning</li>
-            </ul>
-          </div>
-          <a href="#request" onclick="selectService('Training: SQL')" class="mt-6 block text-center py-2.5 rounded-lg bg-slate-900 hover:bg-orange-600 text-sm font-medium text-white transition">
-            Enroll in SQL Training →
-          </a>
-        </div>
-
-        <!-- Snowflake -->
-        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <span class="inline-block px-2.5 py-1 rounded text-xs font-mono bg-orange-50 text-orange-700 border border-orange-200">Track 02</span>
-            <h3 class="mt-4 text-xl font-bold text-slate-900">Snowflake Data Cloud</h3>
-            <p class="mt-2 text-sm text-slate-600">End-to-end cloud data warehousing, architecture, data loading pipelines, security, and cost optimization.</p>
-            <ul class="mt-4 space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-4">
-              <li>• Virtual Warehouses, Clustering & Caching</li>
-              <li>• Snowpipe, Streams, Tasks & Time Travel</li>
-              <li>• RBAC Security & Cloud Storage Integration</li>
-            </ul>
-          </div>
-          <a href="#request" onclick="selectService('Training: Snowflake')" class="mt-6 block text-center py-2.5 rounded-lg bg-slate-900 hover:bg-orange-600 text-sm font-medium text-white transition">
-            Enroll in Snowflake Training →
-          </a>
-        </div>
-
-        <!-- dbt -->
-        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <span class="inline-block px-2.5 py-1 rounded text-xs font-mono bg-orange-50 text-orange-700 border border-orange-200">Track 03</span>
-            <h3 class="mt-4 text-xl font-bold text-slate-900">Analytics Engineering with dbt</h3>
-            <p class="mt-2 text-sm text-slate-600">Build modular, tested, and version-controlled data transformation pipelines using software engineering best practices.</p>
-            <ul class="mt-4 space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-4">
-              <li>• Models, Materializations & Incremental Loads</li>
-              <li>• Jinja Templating, Macros & Packages</li>
-              <li>• Data Quality Tests, Documentation & Git CI/CD</li>
-            </ul>
-          </div>
-          <a href="#request" onclick="selectService('Training: dbt')" class="mt-6 block text-center py-2.5 rounded-lg bg-slate-900 hover:bg-orange-600 text-sm font-medium text-white transition">
-            Enroll in dbt Training →
-          </a>
-        </div>
-      </div>
+    <div class="cta-box">
+      <h2>Need Custom Data Engineering or 1-on-1 Support?</h2>
+      <p>Tell us about your project stack, sprint challenge, or training goals.</p>
+      <a href="contact.html" class="btn">Get Started Today</a>
     </div>
-  </section>
+  </main>
 
-  <!-- Request Submission Form -->
-  <section id="request" class="py-20 bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="p-8 sm:p-10 rounded-2xl bg-slate-50 border border-slate-200 shadow-lg">
-        <div class="mb-8">
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Submit a Support or Training Request</h2>
-          <p class="mt-2 text-sm text-slate-600">
-            Share your requirements with <span class="text-orange-600 font-semibold">bshdigit.com</span> below. I will review your details and reach out promptly.
-          </p>
-        </div>
-
-        <form id="supportForm" action="https://formspree.io/f/mqpqnbjv" method="POST" class="space-y-5">
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label for="name" class="block text-sm font-medium text-slate-700 mb-1.5">Full Name *</label>
-              <input type="text" id="name" name="name" required placeholder="Your name"
-                class="w-full px-4 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-orange-500" />
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-slate-700 mb-1.5">Email Address *</label>
-              <input type="email" id="email" name="email" required placeholder="you@example.com"
-                class="w-full px-4 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-orange-500" />
-            </div>
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label for="phone" class="block text-sm font-medium text-slate-700 mb-1.5">Phone / WhatsApp (with Country Code)</label>
-              <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210"
-                class="w-full px-4 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-orange-500" />
-            </div>
-            <div>
-              <label for="requestType" class="block text-sm font-medium text-slate-700 mb-1.5">Request Type *</label>
-              <select id="requestType" name="requestType" required
-                class="w-full px-4 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 focus:outline-none focus:border-orange-500">
-                <option value="Job Support">Job Support (Project / Task Help)</option>
-                <option value="Training: SQL">Personal Training: SQL</option>
-                <option value="Training: Snowflake">Personal Training: Snowflake</option>
-                <option value="Training: dbt">Personal Training: dbt</option>
-                <option value="Training: Combined Stack">Personal Training: SQL + Snowflake + dbt</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-sm font-medium text-slate-700 mb-2">Technologies Involved</label>
-            <div class="flex flex-wrap gap-2">
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="SQL" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">SQL</span></label>
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="PL/SQL" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">PL/SQL</span></label>
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="T-SQL" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">T-SQL</span></label>
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="Python" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">Python</span></label>
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="AWS" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">AWS</span></label>
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="Azure" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">Azure</span></label>
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="Snowflake" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">Snowflake</span></label>
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="dbt" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">dbt</span></label>
-              <label class="cursor-pointer"><input type="checkbox" name="skills" value="Git / Jira / Azure Boards" class="peer sr-only"><span class="inline-block px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-300 text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-700 transition">Git / Jira / Azure Boards</span></label>
-            </div>
-          </div>
-
-          <div>
-            <label for="details" class="block text-sm font-medium text-slate-700 mb-1.5">Describe Your Requirement & Preferred Timezone *</label>
-            <textarea id="details" name="details" rows="4" required
-              placeholder="Briefly describe the project issue you need help with, or your current experience level and learning goals..."
-              class="w-full px-4 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-orange-500"></textarea>
-          </div>
-
-          <button type="submit" id="submitBtn"
-            class="w-full py-3.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-semibold transition cursor-pointer shadow-md shadow-orange-600/15">
-            Submit Request
-          </button>
-
-          <p id="formStatus" class="hidden text-sm text-center p-3 rounded-lg"></p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white py-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <img src="logo.jpg" alt="bshdigit.com" class="h-10 w-auto object-contain" />
-      </div>
-      <div class="text-xs text-slate-500 text-center sm:text-right">
-        © 2026 <span class="text-slate-800 font-semibold">bshdigit.com</span> • Software • Digital Services • Solutions (15+ Years Experience)
-      </div>
-    </div>
+  <footer>
+    <p>&copy; 2026 BSHDigit — Software, Digital Services & Solutions. All Rights Reserved.</p>
   </footer>
-
-  <script>
-    // Pre-select training track when clicking "Enroll" buttons
-    function selectService(value) {
-      const select = document.getElementById('requestType');
-      if (select) select.value = value;
-    }
-
-    // Submit form via AJAX to Formspree so the user stays on your page
-    const form = document.getElementById('supportForm');
-    const statusMsg = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          statusMsg.className = 'text-sm text-center p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 block';
-          statusMsg.textContent = 'Thank you! Your request has been submitted to bshdigit.com. I will get back to you shortly.';
-          form.reset();
-        } else {
-          const data = await response.json();
-          throw new Error(data.errors ? data.errors.map(err => err.message).join(', ') : 'Submission failed');
-        }
-      } catch (err) {
-        statusMsg.className = 'text-sm text-center p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 block';
-        statusMsg.textContent = 'There was an issue sending your request. Please try again.';
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Request';
-      }
-    });
-  </script>
 </body>
 </html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | BSHDigit</title>
+  <style>
+    :root { --primary: #ea580c; --accent: #f97316; --accent-dark: #c2410c; --bg: #ffffff; --surface: #fff7ed; --text: #1e293b; --muted: #475569; --border: #fed7aa; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+    header { background: #ffffff; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1120px; margin: 0 auto; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .brand { display: flex; align-items: center; text-decoration: none; }
+    .brand img { height: 50px; width: auto; border-radius: 6px; display: block; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 600; margin-left: 1.5rem; padding-bottom: 4px; }
+    nav a:hover, nav a.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+    .page-banner { background: #ffffff; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; text-align: center; }
+    .page-banner h1 { font-size: 2.1rem; margin-bottom: 0.5rem; color: var(--primary); }
+    .page-banner p { color: var(--muted); max-width: 640px; margin: 0 auto; }
+    .container { max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .info-card, .form-card { background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 2rem; box-shadow: 0 2px 10px rgba(249,115,22,0.05); }
+    .info-card h2, .form-card h2 { color: var(--primary); margin-bottom: 1rem; font-size: 1.35rem; }
+    .info-item { margin-bottom: 1.2rem; }
+    .info-item strong { display: block; color: var(--primary); }
+    .info-item span { color: var(--muted); font-size: 0.95rem; }
+    label { display: block; font-weight: 600; color: var(--primary); margin-bottom: 0.35rem; font-size: 0.92rem; }
+    input, select, textarea { width: 100%; padding: 0.7rem; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 1.1rem; font-size: 0.95rem; background: #ffffff; color: var(--text); }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+    button { background: var(--accent); color: #ffffff; border: none; padding: 0.85rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: background 0.2s; }
+    button:hover { background: var(--accent-dark); }
+    footer { background: #ffffff; border-top: 2px solid var(--border); color: var(--primary); text-align: center; padding: 2rem 1.5rem; margin-top: 3rem; font-size: 0.9rem; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand" aria-label="BSHDigit Home">
+        <img src="logo.jpg" alt="BSHDigit" />
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html" class="active">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <h1>Contact Us</h1>
+    <p>Reach out for IT project consulting, real-time technical support, or 1-on-1 training inquiries.</p>
+  </section>
+
+  <main class="container">
+    <div class="info-card">
+      <h2>Get in Touch</h2>
+      <div class="info-item">
+        <strong>Website</strong>
+        <span>https://bshdigit.com</span>
+      </div>
+      <div class="info-item">
+        <strong>Core Expertise</strong>
+        <span>SQL, Snowflake, dbt, Python, AWS, Azure, Git & Agile Delivery</span>
+      </div>
+      <div class="info-item">
+        <strong>Engagement Models</strong>
+        <span>Project Consulting, On-Demand Job Support & 1-on-1 Live Training</span>
+      </div>
+      <div class="info-item">
+        <strong>Response Time</strong>
+        <span>Within 4–12 business hours</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>Submit a Support or Training Request</h2>
+      <!-- Replace YOUR_ACCESS_KEY with your free Web3Forms key so submissions reach your email -->
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+        <label for="service">Service Needed</label>
+        <select id="service" name="service">
+          <option value="Technical Job Support">Real-Time Technical Job Support</option>
+          <option value="1-on-1 Personal Training">1-on-1 Personal Training (SQL / Snowflake / dbt)</option>
+          <option value="Data Engineering Project">Data Engineering / Cloud Consulting</option>
+          <option value="Other IT Solution">Other Software / Digital Service</option>
+        </select>
+
+        <label for="message">Project or Requirement Details</label>
+        <textarea id="message" name="message" rows="4" placeholder="Describe your tech stack, timeline, or training goals..." required></textarea>
+
+        <button type="submit">Send Request</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 BSHDigit — Software, Digital Services & Solutions. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
