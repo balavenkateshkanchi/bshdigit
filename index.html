@@ -6,80 +6,61 @@
   <title>BSHDigit | Data Engineering, Real-Time Job Support &amp; 1-on-1 Training</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Homepage-specific Search & Stats enhancements */
-    .search-box-wrap {
-      background: #ffffff;
-      border: 2px solid var(--primary-orange);
-      border-radius: 10px;
-      padding: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      max-width: 780px;
-      box-shadow: var(--shadow-md);
-      margin-bottom: 16px;
-    }
-    .search-box-wrap select,
-    .search-box-wrap input {
-      border: none;
-      padding: 12px 14px;
-      font-size: 0.95rem;
-      font-family: inherit;
-      outline: none;
-    }
-    .search-box-wrap select {
-      border-right: 1px solid var(--border-light);
-      font-weight: 600;
-      color: var(--text-dark);
-      background: transparent;
-    }
-    .search-box-wrap input {
-      flex: 1;
-      min-width: 200px;
-    }
-    .popular-pills {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-    }
-    .popular-pills span {
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-    .popular-pills a {
-      background: #ffffff;
-      border: 1px solid var(--orange-border);
-      color: var(--primary-orange-dark);
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-    .popular-pills a:hover {
-      background: var(--primary-orange);
-      color: #ffffff;
-    }
-    .stats-strip {
-      background: var(--primary-orange);
-      color: #ffffff;
-      padding: 36px 0;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 24px;
-      text-align: center;
-    }
-    .stats-grid h3 {
-      font-size: 2rem;
-      font-weight: 800;
-    }
-    .stats-grid p {
-      font-size: 0.92rem;
-      opacity: 0.95;
-    }
+    /* Critical Fail-Safe Styles so page always fits 100% cleanly */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; max-width: 100%; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #374151; background: #fff; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 92%; max-width: 1180px; margin: 0 auto; }
+    .navbar { background: #fff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+    .brand-logo { display: inline-flex; align-items: center; max-width: 200px; height: 46px; }
+    .brand-logo img { height: 44px; width: auto; max-width: 190px; object-fit: contain; display: block; }
+    .menu-toggle-btn { width: 46px; height: 46px; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1e293b; }
+    .nav-drawer { display: none; position: fixed; top: 76px; left: 0; width: 100%; height: calc(100vh - 76px); background: #fff; overflow-y: auto; padding: 20px 0 48px; z-index: 999; border-top: 1px solid #e5e7eb; }
+    .nav-drawer.open { display: block; }
+    .drawer-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .drawer-item > a, .drawer-accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 8px; font-size: 1.05rem; font-weight: 600; color: #111827; cursor: pointer; }
+    .accordion-icon { width: 32px; height: 32px; background: #f97316; color: #fff; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+    .drawer-submenu { display: none; flex-direction: column; gap: 10px; padding: 6px 0 12px; }
+    .drawer-accordion.expanded .drawer-submenu { display: flex; }
+    .drawer-submenu a { display: block; background: #f8fafc; border: 1px solid #f1f5f9; padding: 13px 16px; border-radius: 8px; font-size: 0.96rem; font-weight: 500; color: #334155; }
+    .service-hero { background: #fffcf9; border-bottom: 1px solid #fed7aa; padding: 60px 0; }
+    .hero-eyebrow { display: inline-block; background: #fff; color: #ea580c; border: 1px solid #fed7aa; font-size: 0.76rem; font-weight: 700; padding: 6px 14px; border-radius: 999px; margin-bottom: 16px; }
+    .service-hero h1 { font-size: clamp(1.75rem, 4vw, 2.45rem); color: #f97316; line-height: 1.22; max-width: 820px; margin-bottom: 16px; font-weight: 800; }
+    .service-hero p { font-size: 1.05rem; max-width: 740px; margin-bottom: 26px; }
+    .btn-primary { background: #f97316; color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: 700; border: 2px solid #f97316; display: inline-block; cursor: pointer; }
+    .btn-outline { background: #fff; color: #ea580c; padding: 10px 20px; border-radius: 8px; font-weight: 700; border: 2px solid #f97316; display: inline-block; }
+    .search-box-wrap { background: #fff; border: 2px solid #f97316; border-radius: 10px; padding: 6px; display: flex; flex-wrap: wrap; gap: 6px; max-width: 760px; margin-bottom: 16px; }
+    .search-box-wrap select, .search-box-wrap input { border: none; padding: 11px 12px; font-size: 0.94rem; outline: none; min-width: 0; }
+    .search-box-wrap input { flex: 1 1 200px; }
+    .popular-pills { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.84rem; }
+    .popular-pills a { background: #fff; border: 1px solid #fed7aa; color: #ea580c; padding: 4px 12px; border-radius: 999px; font-weight: 600; }
+    .stats-strip { background: #f97316; color: #fff; padding: 34px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; text-align: center; }
+    .stats-grid h3 { font-size: 1.85rem; font-weight: 800; }
+    .section { padding: 58px 0; }
+    .section-alt { background: #f8fafc; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; }
+    .section-header { margin-bottom: 32px; }
+    .section-header h2 { font-size: clamp(1.5rem, 3vw, 1.85rem); color: #f97316; font-weight: 800; margin-bottom: 10px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
+    .feature-card { background: #fff; border: 1px solid #e5e7eb; border-top: 4px solid #f97316; border-radius: 10px; padding: 24px 20px; }
+    .feature-card h3 { font-size: 1.12rem; color: #111827; margin-bottom: 10px; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tech-pill { background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; }
+    .cta-banner { background: #f97316; color: #fff; border-radius: 14px; padding: 40px 32px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; }
+    .enquiry-box { background: #fff; color: #111827; padding: 22px; border-radius: 10px; }
+    .enquiry-box h3 { color: #f97316; margin-bottom: 12px; }
+    .form-group { margin-bottom: 10px; }
+    .form-group input, .form-group select { width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 0.92rem; }
+    .btn-submit { width: 100%; background: #f97316; color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+    .footer { background: #fff; border-top: 1px solid #e5e7eb; padding: 40px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px; margin-bottom: 24px; }
+    .footer h4 { color: #f97316; margin-bottom: 10px; }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 8px; font-size: 0.9rem; }
+    .footer-bottom { border-top: 1px solid #e5e7eb; padding-top: 16px; text-align: center; font-size: 0.85rem; color: #6b7280; }
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; padding: 11px 18px; border-radius: 999px; font-weight: 700; font-size: 0.88rem; z-index: 990; }
+    @media (max-width: 820px) { .cta-banner { grid-template-columns: 1fr; padding: 26px 18px; } }
   </style>
 </head>
 <body>
@@ -87,12 +68,10 @@
   <!-- Header -->
   <header class="navbar">
     <div class="container nav-container">
-      <!-- Your Unchanged logo.jpg -->
       <a href="index.html" class="brand-logo">
-        <img src="logo.jpg" alt="BSHDigit Logo" />
+        <img src="logo.jpg" alt="BSHDigit Logo" style="height:44px;width:auto;max-width:190px;object-fit:contain;" />
       </a>
 
-      <!-- Rounded-Square Hamburger / Close Button -->
       <button
         class="menu-toggle-btn"
         id="menuToggle"
@@ -117,12 +96,8 @@
   <nav class="nav-drawer" id="navDrawer">
     <div class="container">
       <ul class="drawer-list">
-        <li class="drawer-item">
-          <a href="index.html" onclick="toggleNavDrawer()">Home</a>
-        </li>
-        <li class="drawer-item">
-          <a href="#why-us" onclick="toggleNavDrawer()">About Us</a>
-        </li>
+        <li class="drawer-item"><a href="index.html" onclick="toggleNavDrawer()">Home</a></li>
+        <li class="drawer-item"><a href="#why-us" onclick="toggleNavDrawer()">About Us</a></li>
         <li class="drawer-item drawer-accordion expanded" id="servicesAccordion">
           <div class="drawer-accordion-header" onclick="toggleServicesAccordion()">
             <span>Services</span>
@@ -134,12 +109,8 @@
             <a href="data-consulting.html">Data Engineering Consulting</a>
           </div>
         </li>
-        <li class="drawer-item">
-          <a href="#services" onclick="toggleNavDrawer()">Technologies</a>
-        </li>
-        <li class="drawer-item">
-          <a href="#quick-enquiry" onclick="toggleNavDrawer()">Contact Us</a>
-        </li>
+        <li class="drawer-item"><a href="#services" onclick="toggleNavDrawer()">Technologies</a></li>
+        <li class="drawer-item"><a href="#quick-enquiry" onclick="toggleNavDrawer()">Contact Us</a></li>
       </ul>
     </div>
   </nav>
@@ -151,7 +122,6 @@
       <h1>Real-Time Technical Job Support, Data Engineering &amp; 1-on-1 Mentorship</h1>
       <p>Master Snowflake, dbt, Enterprise SQL, and Cloud ETL pipelines with live production support and custom 1-on-1 technical training led by senior practitioners.</p>
 
-      <!-- Search Router -->
       <form class="search-box-wrap" onsubmit="routeService(event)">
         <select id="serviceType" aria-label="Select Service">
           <option value="job-support.html">Real-Time Job Support</option>
@@ -284,7 +254,7 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="brand-logo">
-            <img src="logo.jpg" alt="BSHDigit Logo" />
+            <img src="logo.jpg" alt="BSHDigit Logo" style="height:44px;width:auto;max-width:190px;object-fit:contain;" />
           </a>
           <p style="margin-top: 12px; font-size: 0.9rem;">Enterprise Data Engineering Consulting, Real-Time Job Support, and 1-on-1 Technical Mentorship.</p>
         </div>
@@ -326,14 +296,12 @@
     }
 
     function toggleServicesAccordion() {
-      const acc = document.getElementById('servicesAccordion');
-      acc.classList.toggle('expanded');
+      document.getElementById('servicesAccordion').classList.toggle('expanded');
     }
 
     function routeService(e) {
       e.preventDefault();
-      const targetPage = document.getElementById('serviceType').value;
-      window.location.href = targetPage;
+      window.location.href = document.getElementById('serviceType').value;
     }
   </script>
 </body>
