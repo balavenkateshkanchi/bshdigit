@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BSHDigit | Data Engineering, Real-Time Job Support &amp; 1-on-1 Training</title>
+  <title>BSHDigit | IT Consulting, Data Engineering, Job Support &amp; 1-on-1 Training</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Critical Fail-Safe Styles so page always fits 100% cleanly */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; max-width: 100%; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #374151; background: #fff; line-height: 1.6; }
     a { text-decoration: none; color: inherit; }
     .container { width: 92%; max-width: 1180px; margin: 0 auto; }
     .navbar { background: #fff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; height: 76px; }
-    .brand-logo { display: inline-flex; align-items: center; max-width: 200px; height: 46px; }
-    .brand-logo img { height: 44px; width: auto; max-width: 190px; object-fit: contain; display: block; }
-    .menu-toggle-btn { width: 46px; height: 46px; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1e293b; }
-    .nav-drawer { display: none; position: fixed; top: 76px; left: 0; width: 100%; height: calc(100vh - 76px); background: #fff; overflow-y: auto; padding: 20px 0 48px; z-index: 999; border-top: 1px solid #e5e7eb; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; height: 88px; }
+    .brand-logo { display: inline-flex; align-items: center; max-width: 270px; height: 68px; }
+    .brand-logo img { height: 64px; width: auto; max-width: 260px; object-fit: contain; display: block; }
+    .menu-toggle-btn { width: 48px; height: 48px; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1e293b; }
+    .nav-drawer { display: none; position: fixed; top: 88px; left: 0; width: 100%; height: calc(100vh - 88px); background: #fff; overflow-y: auto; padding: 20px 0 48px; z-index: 999; border-top: 1px solid #e5e7eb; }
     .nav-drawer.open { display: block; }
     .drawer-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .drawer-item > a, .drawer-accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 8px; font-size: 1.05rem; font-weight: 600; color: #111827; cursor: pointer; }
-    .accordion-icon { width: 32px; height: 32px; background: #f97316; color: #fff; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+    .drawer-item > a, .drawer-accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 8px; font-size: 1.06rem; font-weight: 600; color: #111827; cursor: pointer; }
+    .accordion-icon { width: 34px; height: 34px; background: #f97316; color: #fff; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.82rem; transition: transform 0.2s ease; }
+    .drawer-accordion.expanded .accordion-icon { transform: rotate(180deg); }
     .drawer-submenu { display: none; flex-direction: column; gap: 10px; padding: 6px 0 12px; }
     .drawer-accordion.expanded .drawer-submenu { display: flex; }
     .drawer-submenu a { display: block; background: #f8fafc; border: 1px solid #f1f5f9; padding: 13px 16px; border-radius: 8px; font-size: 0.96rem; font-weight: 500; color: #334155; }
@@ -69,7 +69,7 @@
   <header class="navbar">
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
-        <img src="logo.jpg" alt="BSHDigit Logo" style="height:44px;width:auto;max-width:190px;object-fit:contain;" />
+        <img src="logo.jpg" alt="BSHDigit Logo" style="height:64px;width:auto;max-width:260px;object-fit:contain;" />
       </a>
 
       <button
@@ -92,21 +92,22 @@
     </div>
   </header>
 
-  <!-- Full-Screen Accordion Menu Drawer -->
+  <!-- Full-Screen Accordion Menu Drawer (Collapsed by Default) -->
   <nav class="nav-drawer" id="navDrawer">
     <div class="container">
       <ul class="drawer-list">
         <li class="drawer-item"><a href="index.html" onclick="toggleNavDrawer()">Home</a></li>
         <li class="drawer-item"><a href="#why-us" onclick="toggleNavDrawer()">About Us</a></li>
-        <li class="drawer-item drawer-accordion expanded" id="servicesAccordion">
+        <li class="drawer-item drawer-accordion" id="servicesAccordion">
           <div class="drawer-accordion-header" onclick="toggleServicesAccordion()">
             <span>Services</span>
-            <span class="accordion-icon">▲</span>
+            <span class="accordion-icon">▼</span>
           </div>
           <div class="drawer-submenu">
             <a href="job-support.html">Real-Time Job Support</a>
             <a href="technical-training.html">1-on-1 Technical Training</a>
             <a href="data-consulting.html">Data Engineering Consulting</a>
+            <a href="it-consulting.html">IT Consulting</a>
           </div>
         </li>
         <li class="drawer-item"><a href="#services" onclick="toggleNavDrawer()">Technologies</a></li>
@@ -119,14 +120,15 @@
   <section class="service-hero">
     <div class="container">
       <span class="hero-eyebrow">15+ YEARS ENTERPRISE DATA &amp; CLOUD EXPERTISE</span>
-      <h1>Real-Time Technical Job Support, Data Engineering &amp; 1-on-1 Mentorship</h1>
-      <p>Master Snowflake, dbt, Enterprise SQL, and Cloud ETL pipelines with live production support and custom 1-on-1 technical training led by senior practitioners.</p>
+      <h1>Real-Time Technical Job Support, IT Consulting &amp; 1-on-1 Mentorship</h1>
+      <p>Master Snowflake, dbt, Enterprise SQL, and Cloud ETL pipelines—or scale your engineering team with cost-effective IT consulting and live production support led by senior practitioners.</p>
 
       <form class="search-box-wrap" onsubmit="routeService(event)">
         <select id="serviceType" aria-label="Select Service">
           <option value="job-support.html">Real-Time Job Support</option>
           <option value="technical-training.html">1-on-1 Technical Training</option>
           <option value="data-consulting.html">Data Engineering Consulting</option>
+          <option value="it-consulting.html">IT Consulting &amp; Outsourcing</option>
         </select>
         <input type="text" id="techKeyword" placeholder="Search technology (e.g., Snowflake, dbt, PL/SQL, AWS)..." />
         <button type="submit" class="btn-primary">Explore</button>
@@ -138,7 +140,7 @@
         <a href="technical-training.html">dbt ›</a>
         <a href="job-support.html">Enterprise SQL ›</a>
         <a href="data-consulting.html">Python &amp; AWS ›</a>
-        <a href="data-consulting.html">Azure Data Factory ›</a>
+        <a href="it-consulting.html">IT Consulting ›</a>
       </div>
     </div>
   </section>
@@ -155,8 +157,8 @@
         <p>1-on-1 Screen-Share Sessions</p>
       </div>
       <div>
-        <h3>8+ Core Stacks</h3>
-        <p>Snowflake, dbt, SQL, AWS &amp; Azure</p>
+        <h3>50%+</h3>
+        <p>IT Consulting Cost Savings</p>
       </div>
       <div>
         <h3>Global</h3>
@@ -170,7 +172,7 @@
     <div class="container">
       <div class="section-header">
         <h2>Our Core Services &amp; Solutions</h2>
-        <p>End-to-end learning, real-time workplace support, and cloud data consulting for professionals and growing teams.</p>
+        <p>End-to-end learning, real-time workplace support, and enterprise IT &amp; cloud data consulting for professionals and growing teams.</p>
       </div>
 
       <div class="cards-grid">
@@ -188,6 +190,11 @@
           <h3>Data Engineering Consulting</h3>
           <p>Legacy database migrations, automated ELT pipelines, and Snowflake cost/performance optimization.</p>
           <p style="margin-top: 16px;"><a href="data-consulting.html" class="btn-outline" style="padding: 8px 16px; font-size: 0.88rem;">Explore Service →</a></p>
+        </div>
+        <div class="feature-card">
+          <h3>IT Consulting</h3>
+          <p>Flexible remote workforces, staff augmentation, and cross-functional engineering teams for cost-efficient delivery.</p>
+          <p style="margin-top: 16px;"><a href="it-consulting.html" class="btn-outline" style="padding: 8px 16px; font-size: 0.88rem;">Explore Service →</a></p>
         </div>
       </div>
     </div>
@@ -219,7 +226,7 @@
       <div class="cta-banner">
         <div>
           <h2>Connect with a Senior Data Architect</h2>
-          <p>Whether you need urgent sprint assistance, a 1-on-1 training demo, or a cloud migration plan, get a response in less than 15 minutes.</p>
+          <p>Whether you need urgent sprint assistance, a 1-on-1 training demo, or an IT consulting team, get a response in less than 15 minutes.</p>
         </div>
         <div class="enquiry-box">
           <h3>Quick Enquiry</h3>
@@ -239,6 +246,7 @@
                 <option value="Real-Time Job Support">Real-Time Job Support</option>
                 <option value="1-on-1 Technical Training">1-on-1 Technical Training</option>
                 <option value="Data Engineering Consulting">Data Engineering Consulting</option>
+                <option value="IT Consulting">IT Consulting</option>
               </select>
             </div>
             <button type="submit" class="btn-submit">Submit Enquiry</button>
@@ -254,9 +262,9 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="brand-logo">
-            <img src="logo.jpg" alt="BSHDigit Logo" style="height:44px;width:auto;max-width:190px;object-fit:contain;" />
+            <img src="logo.jpg" alt="BSHDigit Logo" style="height:64px;width:auto;max-width:260px;object-fit:contain;" />
           </a>
-          <p style="margin-top: 12px; font-size: 0.9rem;">Enterprise Data Engineering Consulting, Real-Time Job Support, and 1-on-1 Technical Mentorship.</p>
+          <p style="margin-top: 12px; font-size: 0.9rem;">Enterprise IT Consulting, Data Engineering, Real-Time Job Support, and 1-on-1 Technical Mentorship.</p>
         </div>
         <div>
           <h4>Our Services</h4>
@@ -264,6 +272,7 @@
             <li><a href="job-support.html">Real-Time Job Support</a></li>
             <li><a href="technical-training.html">1-on-1 Technical Training</a></li>
             <li><a href="data-consulting.html">Data Engineering Consulting</a></li>
+            <li><a href="it-consulting.html">IT Consulting</a></li>
           </ul>
         </div>
         <div>

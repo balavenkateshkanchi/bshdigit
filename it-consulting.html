@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Consulting &amp; Outsourcing Services | BSHDigit</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; max-width: 100%; overflow-x: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #374151; background: #fff; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 92%; max-width: 1180px; margin: 0 auto; }
+    .navbar { background: #fff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; height: 88px; }
+    .brand-logo { display: inline-flex; align-items: center; max-width: 270px; height: 68px; }
+    .brand-logo img { height: 64px; width: auto; max-width: 260px; object-fit: contain; display: block; }
+    .menu-toggle-btn { width: 48px; height: 48px; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1e293b; }
+    .nav-drawer { display: none; position: fixed; top: 88px; left: 0; width: 100%; height: calc(100vh - 88px); background: #fff; overflow-y: auto; padding: 20px 0 48px; z-index: 999; border-top: 1px solid #e5e7eb; }
+    .nav-drawer.open { display: block; }
+    .drawer-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .drawer-item > a, .drawer-accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 8px; font-size: 1.06rem; font-weight: 600; color: #111827; cursor: pointer; }
+    .accordion-icon { width: 34px; height: 34px; background: #f97316; color: #fff; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.82rem; transition: transform 0.2s ease; }
+    .drawer-accordion.expanded .accordion-icon { transform: rotate(180deg); }
+    .drawer-submenu { display: none; flex-direction: column; gap: 10px; padding: 6px 0 12px; }
+    .drawer-accordion.expanded .drawer-submenu { display: flex; }
+    .drawer-submenu a { display: block; background: #f8fafc; border: 1px solid #f1f5f9; padding: 13px 16px; border-radius: 8px; font-size: 0.96rem; font-weight: 500; color: #334155; }
+    .service-hero { background: #fffcf9; border-bottom: 1px solid #fed7aa; padding: 60px 0; }
+    .hero-eyebrow { display: inline-block; background: #fff; color: #ea580c; border: 1px solid #fed7aa; font-size: 0.76rem; font-weight: 700; padding: 6px 14px; border-radius: 999px; margin-bottom: 16px; }
+    .service-hero h1 { font-size: clamp(1.75rem, 4vw, 2.45rem); color: #f97316; line-height: 1.22; max-width: 820px; margin-bottom: 16px; font-weight: 800; }
+    .service-hero p { font-size: 1.05rem; max-width: 740px; margin-bottom: 26px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn-primary { background: #f97316; color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: 700; border: 2px solid #f97316; display: inline-block; cursor: pointer; }
+    .btn-outline { background: #fff; color: #ea580c; padding: 12px 24px; border-radius: 8px; font-weight: 700; border: 2px solid #f97316; display: inline-block; }
+    .section { padding: 58px 0; }
+    .section-alt { background: #f8fafc; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; }
+    .section-header { margin-bottom: 32px; }
+    .section-header h2 { font-size: clamp(1.5rem, 3vw, 1.85rem); color: #f97316; font-weight: 800; margin-bottom: 10px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
+    .feature-card { background: #fff; border: 1px solid #e5e7eb; border-top: 4px solid #f97316; border-radius: 10px; padding: 24px 20px; }
+    .feature-card h3 { font-size: 1.12rem; color: #111827; margin-bottom: 10px; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tech-pill { background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .step-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 22px 18px; }
+    .step-number { width: 34px; height: 34px; background: #f97316; color: #fff; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .cta-banner { background: #f97316; color: #fff; border-radius: 14px; padding: 40px 32px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; }
+    .enquiry-box { background: #fff; color: #111827; padding: 22px; border-radius: 10px; }
+    .enquiry-box h3 { color: #f97316; margin-bottom: 12px; }
+    .form-group { margin-bottom: 10px; }
+    .form-group input, .form-group select { width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 0.92rem; }
+    .btn-submit { width: 100%; background: #f97316; color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+    .footer { background: #fff; border-top: 1px solid #e5e7eb; padding: 40px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px; margin-bottom: 24px; }
+    .footer h4 { color: #f97316; margin-bottom: 10px; }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 8px; font-size: 0.9rem; }
+    .footer-bottom { border-top: 1px solid #e5e7eb; padding-top: 16px; text-align: center; font-size: 0.85rem; color: #6b7280; }
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; padding: 11px 18px; border-radius: 999px; font-weight: 700; font-size: 0.88rem; z-index: 990; }
+    @media (max-width: 820px) { .cta-banner { grid-template-columns: 1fr; padding: 26px 18px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="logo.jpg" alt="BSHDigit Logo" style="height:64px;width:auto;max-width:260px;object-fit:contain;" />
+      </a>
+
+      <button
+        class="menu-toggle-btn"
+        id="menuToggle"
+        aria-label="Toggle Menu"
+        aria-expanded="false"
+        onclick="toggleNavDrawer()"
+      >
+        <svg id="iconOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+        <svg id="iconClose" style="display:none;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Full-Screen Accordion Menu Drawer (Collapsed by Default) -->
+  <nav class="nav-drawer" id="navDrawer">
+    <div class="container">
+      <ul class="drawer-list">
+        <li class="drawer-item"><a href="index.html">Home</a></li>
+        <li class="drawer-item"><a href="index.html#why-us">About Us</a></li>
+        <li class="drawer-item drawer-accordion" id="servicesAccordion">
+          <div class="drawer-accordion-header" onclick="toggleServicesAccordion()">
+            <span>Services</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="drawer-submenu">
+            <a href="job-support.html">Real-Time Job Support</a>
+            <a href="technical-training.html">1-on-1 Technical Training</a>
+            <a href="data-consulting.html">Data Engineering Consulting</a>
+            <a href="it-consulting.html">IT Consulting</a>
+          </div>
+        </li>
+        <li class="drawer-item"><a href="index.html#services">Technologies</a></li>
+        <li class="drawer-item"><a href="#consulting-enquiry" onclick="toggleNavDrawer()">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="service-hero">
+    <div class="container">
+      <span class="hero-eyebrow">IT OUTSOURCING • STAFF AUGMENTATION • DEDICATED TEAMS</span>
+      <h1>Get IT Consulting Services That Result in Quality &amp; Cost-Efficiency</h1>
+      <p>We empower startups, mid-market firms, and enterprise teams with flexible IT consulting, dedicated remote talent, and specialized technical execution—helping you ship faster while reducing full-time hiring overhead and operational costs.</p>
+      <div class="hero-actions">
+        <a href="#consulting-enquiry" class="btn-primary">Get a Free Consultation</a>
+        <a href="#delivery-models" class="btn-outline">Explore Delivery Models</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Benefits (TechStar Reference Section 1) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Partner with BSHDigit for IT Consulting</h2>
+        <p>Skilled engineering talent, real-time collaboration, and transparent delivery models engineered to maximize ROI without sacrificing quality.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="feature-card">
+          <h3>50%+ Cost Savings</h3>
+          <p>Achieve significant operational savings compared to local full-time hiring while maintaining enterprise-grade code and architecture standards.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Seasoned Industry Talent</h3>
+          <p>Gain immediate access to vetted engineers and architects with 15+ years of real-world production experience across cloud, data, and software systems.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Seamless Time-Zone Alignment</h3>
+          <p>Real-time overlap across IST, EST, PST, and GMT ensures smooth daily standups, rapid feedback loops, and tight team collaboration.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Zero Lock-In &amp; Full IP Ownership</h3>
+          <p>Scale resources up or down as project demands evolve. You retain complete ownership of all source code, documentation, and cloud assets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How Our Team Delivers & Collaborates (TechStar Reference Sections 2 & 3) -->
+  <section class="section section-alt" id="delivery-models">
+    <div class="container">
+      <div class="section-header">
+        <h2>How Our Consulting Teams Deliver &amp; Collaborate</h2>
+        <p>Choose the engagement structure that best fits your project scope, internal management bandwidth, and delivery timeline.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Remote Workforces &amp; Extended Teams</h3>
+          <p>Scale your engineering capacity on demand. You retain direct control over sprint priorities, budget, and deliverables while we handle talent readiness and operational support.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Expert Advisory Panel</h3>
+          <p>Ideal for critical initiatives requiring specialized technical and domain guidance—combining architecture reviews, performance audits, and hands-on mentorship.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Competency Teams</h3>
+          <p>A foundational pod of specialists with deep technical and business acumen, tightly integrated into your workflow to accelerate core platform development.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Cross-Functional Delivery Teams</h3>
+          <p>End-to-end ownership of specific business challenges—from discovery and architecture through build, QA validation, and production deployment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Consulting Domains -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Core IT Consulting Capabilities</h2>
+        <p>Specialized technical consulting across modern data platforms, cloud infrastructure, and enterprise application development.</p>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-pill">Staff Augmentation</span>
+        <span class="tech-pill">Cloud &amp; Data Engineering</span>
+        <span class="tech-pill">Snowflake &amp; dbt Architecture</span>
+        <span class="tech-pill">Database Modernization</span>
+        <span class="tech-pill">Python &amp; API Integration</span>
+        <span class="tech-pill">AWS &amp; Azure Cloud Services</span>
+        <span class="tech-pill">DevOps &amp; CI/CD Automation</span>
+        <span class="tech-pill">Dedicated Offshore Pods</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inline Free Consultation CTA -->
+  <section class="section" id="consulting-enquiry">
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2>Contact Us Today for a Free Consultation</h2>
+          <p>No matter your business goals, BSHDigit delivers cutting-edge IT consulting solutions with agility, responsiveness, transparency, and integrity.</p>
+        </div>
+        <div class="enquiry-box">
+          <h3>Schedule a Quick Call</h3>
+          <form action="https://formspree.io/f/your-form-id" method="POST">
+            <input type="hidden" name="service" value="IT Consulting & Outsourcing" />
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name *" required />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Work Email *" required />
+            </div>
+            <div class="form-group">
+              <input type="tel" name="phone" placeholder="Phone / WhatsApp Number *" required />
+            </div>
+            <div class="form-group">
+              <select name="engagement_model" required>
+                <option value="">Select Engagement Model *</option>
+                <option value="Extended Team / Staff Augmentation">Extended Team / Staff Augmentation</option>
+                <option value="Cross-Functional Project Delivery">Cross-Functional Project Delivery</option>
+                <option value="Expert Technical Advisory">Expert Technical Advisory</option>
+                <option value="Dedicated Remote Engineer">Dedicated Remote Engineer</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-submit">Get Free Consultation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand-logo">
+            <img src="logo.jpg" alt="BSHDigit Logo" style="height:64px;width:auto;max-width:260px;object-fit:contain;" />
+          </a>
+          <p style="margin-top: 12px; font-size: 0.9rem;">Enterprise IT Consulting, Data Engineering, Real-Time Job Support, and 1-on-1 Technical Mentorship.</p>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="job-support.html">Real-Time Job Support</a></li>
+            <li><a href="technical-training.html">1-on-1 Technical Training</a></li>
+            <li><a href="data-consulting.html">Data Engineering Consulting</a></li>
+            <li><a href="it-consulting.html">IT Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>Hyderabad, Telangana, India</li>
+            <li>hello@bshdigit.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 BSHDigit. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/910000000000" target="_blank" class="whatsapp-float">Chat on WhatsApp</a>
+
+  <script>
+    function toggleNavDrawer() {
+      const drawer = document.getElementById('navDrawer');
+      const btn = document.getElementById('menuToggle');
+      const iconOpen = document.getElementById('iconOpen');
+      const iconClose = document.getElementById('iconClose');
+
+      const isOpen = drawer.classList.toggle('open');
+      btn.classList.toggle('is-open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen);
+      iconOpen.style.display = isOpen ? 'none' : 'block';
+      iconClose.style.display = isOpen ? 'block' : 'none';
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    function toggleServicesAccordion() {
+      document.getElementById('servicesAccordion').classList.toggle('expanded');
+    }
+  </script>
+</body>
+</html>
