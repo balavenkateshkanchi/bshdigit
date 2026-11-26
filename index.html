@@ -3,126 +3,276 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IT Services | BSHDigit</title>
+  <title>BSHDigit | Data Engineering, Real-Time Job Support & 1-on-1 Training</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    :root { --primary: #ea580c; --accent: #f97316; --accent-dark: #c2410c; --bg: #ffffff; --surface: #fff7ed; --text: #1e293b; --muted: #475569; --border: #fed7aa; }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; }
-    header { background: #ffffff; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 1120px; margin: 0 auto; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .brand { display: flex; align-items: center; text-decoration: none; }
-    .brand img { height: 50px; width: auto; border-radius: 6px; display: block; }
-    nav a { text-decoration: none; color: var(--text); font-weight: 600; margin-left: 1.5rem; padding-bottom: 4px; }
-    nav a:hover, nav a.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
-    .page-banner { background: #ffffff; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; text-align: center; }
-    .page-banner h1 { font-size: 2.1rem; margin-bottom: 0.5rem; color: var(--primary); }
-    .page-banner p { color: var(--muted); max-width: 680px; margin: 0 auto; }
-    .container { max-width: 1120px; margin: 0 auto; padding: 3rem 1.5rem; }
-    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.5rem; }
-    .service-card { background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; box-shadow: 0 2px 10px rgba(249,115,22,0.05); }
-    .tag { display: inline-block; background: var(--surface); color: var(--primary); border: 1px solid var(--border); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 999px; margin-bottom: 0.75rem; }
-    .service-card h3 { color: var(--primary); margin-bottom: 0.75rem; }
-    .service-card ul { padding-left: 1.2rem; color: var(--muted); font-size: 0.95rem; }
-    .service-card li { margin-bottom: 0.45rem; }
-    .cta-box { background: #ffffff; border: 2px solid var(--border); border-radius: 10px; padding: 2rem; text-align: center; margin-top: 3rem; }
-    .cta-box h2 { color: var(--primary); margin-bottom: 0.5rem; }
-    .btn { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 1rem; }
-    .btn:hover { background: var(--accent-dark); }
-    footer { background: #ffffff; border-top: 2px solid var(--border); color: var(--primary); text-align: center; padding: 2rem 1.5rem; margin-top: 3rem; font-size: 0.9rem; font-weight: 600; }
+    /* Homepage-specific Search & Ticker enhancements */
+    .search-box-wrap {
+      background: #ffffff;
+      border: 2px solid var(--primary-orange);
+      border-radius: 10px;
+      padding: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: 780px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 16px;
+    }
+    .search-box-wrap select,
+    .search-box-wrap input {
+      border: none;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+    }
+    .search-box-wrap select {
+      border-right: 1px solid var(--border-light);
+      font-weight: 600;
+      color: var(--text-dark);
+      background: transparent;
+    }
+    .search-box-wrap input {
+      flex: 1;
+      min-width: 200px;
+    }
+    .popular-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+    .popular-pills span {
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .popular-pills a {
+      background: #ffffff;
+      border: 1px solid var(--orange-border);
+      color: var(--primary-orange-dark);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .popular-pills a:hover {
+      background: var(--primary-orange);
+      color: #ffffff;
+    }
+    .stats-strip {
+      background: var(--primary-orange);
+      color: #ffffff;
+      padding: 36px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+    .stats-grid h3 {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .stats-grid p {
+      font-size: 0.92rem;
+      opacity: 0.95;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="brand" aria-label="BSHDigit Home">
-        <img src="logo.jpg" alt="BSHDigit" />
-      </a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="services.html" class="active">Services</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="contact.html">Contact Us</a>
-      </nav>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">BSH<span>Digit</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#services">Services ▾</a>
+          <div class="dropdown-menu">
+            <a href="job-support.html">Real-Time Job Support</a>
+            <a href="technical-training.html">1-on-1 Technical Training</a>
+            <a href="data-consulting.html">Data Engineering Consulting</a>
+          </div>
+        </li>
+        <li><a href="#why-us">About Us</a></li>
+        <li><a href="#quick-enquiry" class="nav-cta">Quick Enquiry</a></li>
+      </ul>
     </div>
   </header>
 
-  <section class="page-banner">
-    <h1>IT Services & Technical Solutions</h1>
-    <p>Specialized data engineering, cloud architecture, real-time job support, and personalized technical mentorship.</p>
+  <!-- Hero + Interactive Search (Ecorp Format) -->
+  <section class="service-hero">
+    <div class="container">
+      <span class="hero-eyebrow">15+ YEARS ENTERPRISE DATA &amp; CLOUD EXPERTISE</span>
+      <h1>Real-Time Technical Job Support, Data Engineering &amp; 1-on-1 Mentorship</h1>
+      <p>Master Snowflake, dbt, Enterprise SQL, and Cloud ETL pipelines with live production support and custom 1-on-1 technical training led by senior practitioners.</p>
+
+      <!-- Search Router -->
+      <form class="search-box-wrap" onsubmit="routeService(event)">
+        <select id="serviceType">
+          <option value="job-support.html">Real-Time Job Support</option>
+          <option value="technical-training.html">1-on-1 Technical Training</option>
+          <option value="data-consulting.html">Data Engineering Consulting</option>
+        </select>
+        <input type="text" id="techKeyword" placeholder="Search technology (e.g., Snowflake, dbt, PL/SQL, AWS)..." />
+        <button type="submit" class="btn-primary">Explore</button>
+      </form>
+
+      <div class="popular-pills">
+        <span>POPULAR:</span>
+        <a href="technical-training.html">Snowflake ›</a>
+        <a href="technical-training.html">dbt ›</a>
+        <a href="job-support.html">Enterprise SQL ›</a>
+        <a href="data-consulting.html">Python &amp; AWS ›</a>
+        <a href="data-consulting.html">Azure Data Factory ›</a>
+      </div>
+    </div>
   </section>
 
-  <main class="container">
-    <div class="service-grid">
-      <div class="service-card">
-        <span class="tag">DATA ENGINEERING</span>
-        <h3>Snowflake & Cloud Data Warehousing</h3>
-        <ul>
-          <li>Warehouse sizing, cost optimization, and RBAC security architecture</li>
-          <li>Continuous data ingestion with Snowpipe, Streams, and Tasks</li>
-          <li>Zero-copy cloning, Time Travel, and enterprise data governance</li>
-        </ul>
+  <!-- Metrics Strip -->
+  <section class="stats-strip">
+    <div class="container stats-grid">
+      <div>
+        <h3>15+ Years</h3>
+        <p>Enterprise Data Architecture</p>
       </div>
-
-      <div class="service-card">
-        <span class="tag">ANALYTICS ENGINEERING</span>
-        <h3>dbt (Data Build Tool) Transformations</h3>
-        <ul>
-          <li>Modular SQL modeling (staging, intermediate, and mart layers)</li>
-          <li>Custom Jinja macros, incremental models, and snapshots</li>
-          <li>Automated schema/data quality tests, docs, and Git CI/CD workflows</li>
-        </ul>
+      <div>
+        <h3>100% Live</h3>
+        <p>1-on-1 Screen-Share Sessions</p>
       </div>
-
-      <div class="service-card">
-        <span class="tag">DATABASE SYSTEMS</span>
-        <h3>Enterprise SQL & Query Optimization</h3>
-        <ul>
-          <li>SQL, PL/SQL, and T-SQL stored procedures, triggers, and functions</li>
-          <li>Execution plan analysis, indexing strategies, and query tuning</li>
-          <li>Legacy on-premise database migration to cloud platforms</li>
-        </ul>
+      <div>
+        <h3>8+ Core Stacks</h3>
+        <p>Snowflake, dbt, SQL, AWS &amp; Azure</p>
       </div>
-
-      <div class="service-card">
-        <span class="tag">CLOUD & AUTOMATION</span>
-        <h3>Python, AWS & Azure Solutions</h3>
-        <ul>
-          <li>Python ETL scripts, REST API integrations, and data validation</li>
-          <li>AWS (S3, Glue, Lambda, IAM) & Azure Data Factory pipelines</li>
-          <li>Agile delivery workflows using Git, Jira, and Azure Boards</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <span class="tag">LIVE ASSISTANCE</span>
-        <h3>Real-Time Technical Job Support</h3>
-        <ul>
-          <li>Hands-on debugging and production blocker resolution</li>
-          <li>Architecture reviews and sprint deliverable guidance</li>
-          <li>Confidential, fast-turnaround support for working engineers</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <span class="tag">MENTORSHIP</span>
-        <h3>1-on-1 Personal Technical Training</h3>
-        <ul>
-          <li>Project-based tracks in SQL, Snowflake, dbt, and Python</li>
-          <li>Tailored curriculum for career transitioners and upskilling teams</li>
-          <li>Real-world capstone builds and interview readiness coaching</li>
-        </ul>
+      <div>
+        <h3>Global</h3>
+        <p>IST, EST, PST &amp; GMT Support</p>
       </div>
     </div>
+  </section>
 
-    <div class="cta-box">
-      <h2>Need Custom Data Engineering or 1-on-1 Support?</h2>
-      <p>Tell us about your project stack, sprint challenge, or training goals.</p>
-      <a href="contact.html" class="btn">Get Started Today</a>
+  <!-- Core Service Pillars -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Core Services &amp; Solutions</h2>
+        <p>End-to-end learning, real-time workplace support, and cloud data consulting for professionals and growing teams.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="feature-card">
+          <h3>Real-Time Job Support</h3>
+          <p>Confidential 1-on-1 live debugging, sprint ticket resolution, and architecture reviews for working engineers.</p>
+          <p style="margin-top: 16px;"><a href="job-support.html" class="btn-outline" style="padding: 8px 16px; font-size: 0.88rem;">Explore Service →</a></p>
+        </div>
+        <div class="feature-card">
+          <h3>1-on-1 Technical Training</h3>
+          <p>Project-based personal mentorship in Snowflake, dbt, SQL/PL-SQL/T-SQL, and Python with real-world capstone labs.</p>
+          <p style="margin-top: 16px;"><a href="technical-training.html" class="btn-outline" style="padding: 8px 16px; font-size: 0.88rem;">Explore Service →</a></p>
+        </div>
+        <div class="feature-card">
+          <h3>Data Engineering Consulting</h3>
+          <p>Legacy database migrations, automated ELT pipelines, and Snowflake cost/performance optimization.</p>
+          <p style="margin-top: 16px;"><a href="data-consulting.html" class="btn-outline" style="padding: 8px 16px; font-size: 0.88rem;">Explore Service →</a></p>
+        </div>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <p>&copy; 2026 BSHDigit — Software, Digital Services & Solutions. All Rights Reserved.</p>
+  <!-- Technologies Covered -->
+  <section class="section section-alt" id="why-us">
+    <div class="container">
+      <div class="section-header">
+        <h2>Enterprise Technology Stack</h2>
+        <p>Hands-on expertise across modern cloud data platforms, orchestration tools, and relational databases.</p>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-pill">Snowflake Cloud DW</span>
+        <span class="tech-pill">dbt (Data Build Tool)</span>
+        <span class="tech-pill">Oracle PL/SQL</span>
+        <span class="tech-pill">MS SQL Server T-SQL</span>
+        <span class="tech-pill">Python ETL</span>
+        <span class="tech-pill">AWS (S3, Glue, Lambda)</span>
+        <span class="tech-pill">Azure Data Factory</span>
+        <span class="tech-pill">Git &amp; CI/CD</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Enquiry CTA -->
+  <section class="section" id="quick-enquiry">
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2>Connect with a Senior Data Architect</h2>
+          <p>Whether you need urgent sprint assistance, a 1-on-1 training demo, or a cloud migration plan, get a response in less than 15 minutes.</p>
+        </div>
+        <div class="enquiry-box">
+          <h3>Quick Enquiry</h3>
+          <form action="https://formspree.io/f/your-form-id" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name *" required />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email Address *" required />
+            </div>
+            <div class="form-group">
+              <input type="tel" name="phone" placeholder="WhatsApp / Phone Number *" required />
+            </div>
+            <div class="form-group">
+              <select name="service" required>
+                <option value="">Select Service Needed *</option>
+                <option value="Real-Time Job Support">Real-Time Job Support</option>
+                <option value="1-on-1 Technical Training">1-on-1 Technical Training</option>
+                <option value="Data Engineering Consulting">Data Engineering Consulting</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-submit">Submit Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo">BSH<span>Digit</span></div>
+          <p style="margin-top: 10px; font-size: 0.9rem;">Enterprise Data Engineering Consulting, Real-Time Job Support, and 1-on-1 Technical Mentorship.</p>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="job-support.html">Real-Time Job Support</a></li>
+            <li><a href="technical-training.html">1-on-1 Technical Training</a></li>
+            <li><a href="data-consulting.html">Data Engineering Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>Hyderabad, Telangana, India</li>
+            <li>hello@bshdigit.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 BSHDigit. All rights reserved.</div>
+    </div>
   </footer>
+
+  <a href="https://wa.me/910000000000" target="_blank" class="whatsapp-float">Chat on WhatsApp</a>
+
+  <script>
+    function routeService(e) {
+      e.preventDefault();
+      const targetPage = document.getElementById('serviceType').value;
+      window.location.href = targetPage;
+    }
+  </script>
 </body>
 </html>
