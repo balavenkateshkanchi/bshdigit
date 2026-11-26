@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BSHDigit | Data Engineering, Real-Time Job Support & 1-on-1 Training</title>
+  <title>BSHDigit | Data Engineering, Real-Time Job Support &amp; 1-on-1 Training</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Homepage-specific Search & Ticker enhancements */
+    /* Homepage-specific Search & Stats enhancements */
     .search-box-wrap {
       background: #ffffff;
       border: 2px solid var(--primary-orange);
@@ -55,6 +55,7 @@
       padding: 4px 12px;
       border-radius: 999px;
       font-weight: 600;
+      transition: all 0.2s;
     }
     .popular-pills a:hover {
       background: var(--primary-orange);
@@ -83,27 +84,67 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Header -->
   <header class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="brand-logo">BSH<span>Digit</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li class="dropdown">
-          <a href="#services">Services ▾</a>
-          <div class="dropdown-menu">
+      <!-- Your Unchanged logo.jpg -->
+      <a href="index.html" class="brand-logo">
+        <img src="logo.jpg" alt="BSHDigit Logo" />
+      </a>
+
+      <!-- Rounded-Square Hamburger / Close Button -->
+      <button
+        class="menu-toggle-btn"
+        id="menuToggle"
+        aria-label="Toggle Menu"
+        aria-expanded="false"
+        onclick="toggleNavDrawer()"
+      >
+        <svg id="iconOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+        <svg id="iconClose" style="display:none;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Full-Screen Accordion Menu Drawer -->
+  <nav class="nav-drawer" id="navDrawer">
+    <div class="container">
+      <ul class="drawer-list">
+        <li class="drawer-item">
+          <a href="index.html" onclick="toggleNavDrawer()">Home</a>
+        </li>
+        <li class="drawer-item">
+          <a href="#why-us" onclick="toggleNavDrawer()">About Us</a>
+        </li>
+        <li class="drawer-item drawer-accordion expanded" id="servicesAccordion">
+          <div class="drawer-accordion-header" onclick="toggleServicesAccordion()">
+            <span>Services</span>
+            <span class="accordion-icon">▲</span>
+          </div>
+          <div class="drawer-submenu">
             <a href="job-support.html">Real-Time Job Support</a>
             <a href="technical-training.html">1-on-1 Technical Training</a>
             <a href="data-consulting.html">Data Engineering Consulting</a>
           </div>
         </li>
-        <li><a href="#why-us">About Us</a></li>
-        <li><a href="#quick-enquiry" class="nav-cta">Quick Enquiry</a></li>
+        <li class="drawer-item">
+          <a href="#services" onclick="toggleNavDrawer()">Technologies</a>
+        </li>
+        <li class="drawer-item">
+          <a href="#quick-enquiry" onclick="toggleNavDrawer()">Contact Us</a>
+        </li>
       </ul>
     </div>
-  </header>
+  </nav>
 
-  <!-- Hero + Interactive Search (Ecorp Format) -->
+  <!-- Hero + Interactive Search -->
   <section class="service-hero">
     <div class="container">
       <span class="hero-eyebrow">15+ YEARS ENTERPRISE DATA &amp; CLOUD EXPERTISE</span>
@@ -112,7 +153,7 @@
 
       <!-- Search Router -->
       <form class="search-box-wrap" onsubmit="routeService(event)">
-        <select id="serviceType">
+        <select id="serviceType" aria-label="Select Service">
           <option value="job-support.html">Real-Time Job Support</option>
           <option value="technical-training.html">1-on-1 Technical Training</option>
           <option value="data-consulting.html">Data Engineering Consulting</option>
@@ -202,7 +243,7 @@
     </div>
   </section>
 
-  <!-- Quick Enquiry CTA -->
+  <!-- Inline Quick Enquiry Section -->
   <section class="section" id="quick-enquiry">
     <div class="container">
       <div class="cta-banner">
@@ -242,8 +283,10 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="brand-logo">BSH<span>Digit</span></div>
-          <p style="margin-top: 10px; font-size: 0.9rem;">Enterprise Data Engineering Consulting, Real-Time Job Support, and 1-on-1 Technical Mentorship.</p>
+          <a href="index.html" class="brand-logo">
+            <img src="logo.jpg" alt="BSHDigit Logo" />
+          </a>
+          <p style="margin-top: 12px; font-size: 0.9rem;">Enterprise Data Engineering Consulting, Real-Time Job Support, and 1-on-1 Technical Mentorship.</p>
         </div>
         <div>
           <h4>Our Services</h4>
@@ -268,6 +311,25 @@
   <a href="https://wa.me/910000000000" target="_blank" class="whatsapp-float">Chat on WhatsApp</a>
 
   <script>
+    function toggleNavDrawer() {
+      const drawer = document.getElementById('navDrawer');
+      const btn = document.getElementById('menuToggle');
+      const iconOpen = document.getElementById('iconOpen');
+      const iconClose = document.getElementById('iconClose');
+
+      const isOpen = drawer.classList.toggle('open');
+      btn.classList.toggle('is-open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen);
+      iconOpen.style.display = isOpen ? 'none' : 'block';
+      iconClose.style.display = isOpen ? 'block' : 'none';
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    function toggleServicesAccordion() {
+      const acc = document.getElementById('servicesAccordion');
+      acc.classList.toggle('expanded');
+    }
+
     function routeService(e) {
       e.preventDefault();
       const targetPage = document.getElementById('serviceType').value;
