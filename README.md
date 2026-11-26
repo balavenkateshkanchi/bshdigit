@@ -1,6 +1,6 @@
-# bshdigit.com — Software, Digital Services & Solutions
+# BSHdigIT.com — Software, Digital Services & Solutions
 
-Official web portal for **bshdigit.com**, offering real-time technical job support and 1-on-1 personal training backed by **15+ years of enterprise software and data engineering experience**.
+Official web portal for **BSHdigIT.com**, offering real-time technical job support and 1-on-1 personal training backed by **15+ years of enterprise software and data engineering experience**.
 
 ## Services Offered
 
@@ -19,5 +19,5 @@ Structured, project-based personal mentorship tailored to working professionals 
 
 ## Repository Structure
 * `index.html` — Responsive single-page website with integrated support request form
-* `logo.png` — Official **bshdigit.com** brand logo
+* `logo.png` — Official **BSHdigIT.com** brand logo
 * `README.md` — Project overview and service documentation
